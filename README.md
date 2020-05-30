@@ -1,5 +1,7 @@
 # recoil-tutorial
 
+Recoil basic tutorial (todo list) with Next.js from https://recoiljs.org/docs/basic-tutorial/intro
+
 ## Usage
 
 ```
