@@ -9,6 +9,15 @@ import {
 } from "recoil";
 
 /**
+ * Types
+ */
+type TTodo = {
+  id: number;
+  text: string;
+  isComplete: boolean;
+};
+
+/**
  * Components
  */
 export default function App() {
@@ -32,7 +41,7 @@ function TodoList() {
       <TodoListStats />
       <TodoListFilters />
       <TodoItemCreator />
-      {todoList.map((todoItem: any) => (
+      {todoList.map((todoItem) => (
         <TodoItem key={todoItem.id} item={todoItem} />
       ))}
     </>
@@ -44,7 +53,7 @@ function TodoItemCreator() {
   const setTodoList = useSetRecoilState(todoListState);
 
   const addItem = () => {
-    setTodoList((oldTodoList: any[]) => [
+    setTodoList((oldTodoList) => [
       ...oldTodoList,
       {
         id: getId(),
@@ -67,9 +76,13 @@ function TodoItemCreator() {
   );
 }
 
-function TodoItem({ item }) {
+type TTodoItemProps = {
+  item: TTodo;
+};
+
+function TodoItem({ item }: TTodoItemProps) {
   const [todoList, setTodoList] = useRecoilState(todoListState);
-  const index = todoList.findIndex((listItem: any) => listItem === item);
+  const index = todoList.findIndex((listItem) => listItem === item);
 
   const editItemText = ({ target: { value } }) => {
     const newList = replaceItemAtIndex(todoList, index, {
@@ -147,7 +160,7 @@ function TodoListStats() {
 /**
  * Atoms / selectors
  */
-const todoListState = atom({
+const todoListState = atom<TTodo[]>({
   key: "todoListState",
   default: [],
 });

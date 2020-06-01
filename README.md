@@ -1,6 +1,6 @@
 # recoil-tutorial
 
-Recoil basic tutorial (todo list) with Next.js from https://recoiljs.org/docs/basic-tutorial/intro
+Recoil basic tutorial (todo list) with TypeScript and Next.js from https://recoiljs.org/docs/basic-tutorial/intro
 
 ## Usage
 
